@@ -17,7 +17,7 @@ def on_closing():
 	global root
 
 	root = Toplevel(compiler)
-	root.geometry('250x150')
+	root.geometry('300x100')
 	root.config()
 
 	poplabel=Label(root, text='Are you sure you have saved your file and want to exit?')
