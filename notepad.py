@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter.filedialog import asksaveasfilename, askopenfilename
 
 compiler = Tk()
-compiler.title('Meta Text')
+compiler.title('Notepad Pro')
 
 filepath=''
 
