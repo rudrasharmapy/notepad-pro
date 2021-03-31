@@ -1,10 +1,15 @@
 from tkinter import *
 from tkinter.filedialog import asksaveasfilename, askopenfilename
+from tkinter import filedialog
+from tkinter import font
 
 compiler = Tk()
 compiler.title('Notepad Pro')
 
 filepath=''
+
+text_scroll = Scrollbar()
+text_scroll.pack(side=RIGHT, fill=Y)
 
 def yessir():
 	compiler.destroy()
@@ -56,17 +61,23 @@ def saveas():
 		file.write(code)
 		setfilepath(path)
 
-menubar = Menu(compiler)
-filename = Menu(menubar, tearoff=0)
+filemenubar = Menu(compiler)
+filename = Menu(filemenubar, tearoff=0)
 filename.add_command(label='Open', command=openfile)
 filename.add_command(label='Save', command=saveas)
 filename.add_command(label='Save As', command=saveas)
+filename.add_separator()
 filename.add_command(label='Exit', command=on_closing)
-menubar.add_cascade(label='File', menu=filename)
-compiler.config(menu=menubar)
+filemenubar.add_cascade(label='File', menu=filename)
+compiler.config(menu=filemenubar)
 
-editor=Text()
+editor=Text(width=97, height=25, font=("Helvetica", 16), selectbackground="yellow", selectforeground="black", undo=True)
 editor.pack()
+
+text_scroll.config(command=editor.yview)
+
+status_bar = Label(compiler, text='Ready        ', anchor=E)
+status_bar.pack(fill=X, side=BOTTOM, ipady=15)
 
 compiler.protocol('WM_DELETE_WINDOW', on_closing)
 compiler.mainloop()
