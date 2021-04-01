@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter.filedialog import asksaveasfilename, askopenfilename
 from tkinter import filedialog
 from tkinter import font
+import os
 
 compiler = Tk()
 compiler.title('Notepad Pro')
@@ -10,6 +11,9 @@ filepath=''
 
 text_scroll = Scrollbar()
 text_scroll.pack(side=RIGHT, fill=Y)
+
+def calc():
+	os.system('cal.py')
 
 def yessir():
 	compiler.destroy()
@@ -42,9 +46,11 @@ def on_closing():
 def openfile():
 	path = askopenfilename()
 	with open(path, 'r') as file:
+		
 		code = file.read()
 		editor.delete('1.0', END)
 		editor.insert('1.0', code)
+
 		setfilepath(path)
 
 def setfilepath(path):
@@ -69,6 +75,10 @@ filename.add_command(label='Save As', command=saveas)
 filename.add_separator()
 filename.add_command(label='Exit', command=on_closing)
 filemenubar.add_cascade(label='File', menu=filename)
+
+extraname = Menu(filemenubar, tearoff=0)
+extraname.add_command(label='Calculator', command=calc)
+filemenubar.add_cascade(label='Extra', menu=extraname)
 compiler.config(menu=filemenubar)
 
 editor=Text(width=97, height=25, font=("Helvetica", 16), selectbackground="yellow", selectforeground="black", undo=True)
