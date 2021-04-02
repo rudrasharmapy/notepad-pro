@@ -61,7 +61,7 @@ def setfilepath(path):
 	global filepath
 	filepath = path
 
-def saveas():
+def saver():
 	if filepath == '':
 		path = asksaveasfilename()
 	else:
@@ -71,11 +71,17 @@ def saveas():
 		file.write(code)
 		setfilepath(path)
 
+def saveasr():
+	path = asksaveasfilename()
+	with open(path, 'w') as file:
+		code = editor.get(1.0, END)
+		file.write(code)
+
 filemenubar = Menu(compiler)
 filename = Menu(filemenubar, tearoff=0)
 filename.add_command(label='Open', command=openfile)
-filename.add_command(label='Save', command=saveas)
-filename.add_command(label='Save As', command=saveas)
+filename.add_command(label='Save', command=saver)
+filename.add_command(label='Save As', command=saveasr)
 filename.add_separator()
 filename.add_command(label='Exit', command=on_closing)
 filemenubar.add_cascade(label='File', menu=filename)
