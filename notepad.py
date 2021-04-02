@@ -3,6 +3,7 @@ from tkinter.filedialog import asksaveasfilename, askopenfilename
 from tkinter import filedialog
 from tkinter import font
 import os
+import subprocess
 
 compiler = Tk()
 compiler.title('Notepad Pro')
@@ -13,7 +14,10 @@ text_scroll = Scrollbar()
 text_scroll.pack(side=RIGHT, fill=Y)
 
 def calc():
-	os.system('cal.py')
+	subprocess.Popen("cal")
+
+def fun():
+	subprocess.Popen("Appka-EN")
 
 def yessir():
 	compiler.destroy()
@@ -46,7 +50,7 @@ def on_closing():
 def openfile():
 	path = askopenfilename()
 	with open(path, 'r') as file:
-		
+
 		code = file.read()
 		editor.delete('1.0', END)
 		editor.insert('1.0', code)
@@ -78,6 +82,7 @@ filemenubar.add_cascade(label='File', menu=filename)
 
 extraname = Menu(filemenubar, tearoff=0)
 extraname.add_command(label='Calculator', command=calc)
+extraname.add_command(label='Funny "Appka" app', command=fun)
 filemenubar.add_cascade(label='Extra', menu=extraname)
 compiler.config(menu=filemenubar)
 
