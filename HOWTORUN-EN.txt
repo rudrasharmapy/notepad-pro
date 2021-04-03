@@ -1,0 +1,19 @@
+
+****How to run the Notepad pro****
+
+Go to folder ,,dist". Check if there are 5 files in total and if yes, run the .exe file ,,notepad.exe".
+If you do not have 5 files in the folder, compare the content of folders with content of folders on Google Drive (link bellow) and download missing components and put them to right folders.
+
+After running the .exe file, the computer will display a black window. Wait a while and the Notepad pro will display as well.
+
+----The program doesn't have an antivirus certificate, so it is normal, that most of antivirus softwares, recognizes the program as susspicious or not trustworthy.----
+
+----You can download an updated version here: https://drive.google.com/drive/folders/1mPG4awOe6--LONGr7OqjE9LB2ozmi6WZ?usp=sharing
+
+****If you will find any errors or mistakes, please inform the main developer on one of following addresses:
+
+Discord: [Red Cross] France#0811 | RuSh#5003
+E-mail: tom.ferdan@seznam.cz
+
+Date and time of publishment of this version: 6:00 AM CEST  02.04.2021 
+Version: 0.1
