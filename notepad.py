@@ -4,6 +4,7 @@ from tkinter import filedialog
 from tkinter import font
 import os
 import subprocess
+import pathlib
 
 compiler = Tk()
 compiler.title('Notepad Pro')
@@ -13,11 +14,17 @@ filepath=''
 text_scroll = Scrollbar()
 text_scroll.pack(side=RIGHT, fill=Y)
 
+path1 = pathlib.Path(__file__).parent.absolute()
+
+path2 = str(path1)
+
 def calc():
-	subprocess.Popen("cal")
+	path = path2 + "\dist\cal.exe"
+	subprocess.Popen(path)
 
 def fun():
-	subprocess.Popen("Appka-EN")
+	path = path2 + "\dist\Appka-EN.exe"
+	subprocess.Popen(path)
 
 def yessir():
 	compiler.destroy()
