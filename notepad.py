@@ -11,12 +11,24 @@ compiler.title('Notepad Pro')
 
 filepath=''
 
-text_scroll = Scrollbar()
+framer = Frame(compiler)
+framer.pack(pady=5)
+
+text_scroll = Scrollbar(framer)
 text_scroll.pack(side=RIGHT, fill=Y)
 
 path1 = pathlib.Path(__file__).parent.absolute()
 
 path2 = str(path1)
+
+def dark():
+	colorone = '#000000'
+	colortwo = '#373737'
+	colorthree = '#FFFFFF'
+
+	compiler.config(bg=colorone)
+	status_bar.config(bg=colorone, fg=colorthree)
+	editor.config(bg=colortwo)
 
 def calc():
 	path = path2 + "\dist\cal.exe"
@@ -97,9 +109,14 @@ extraname = Menu(filemenubar, tearoff=0)
 extraname.add_command(label='Calculator', command=calc)
 extraname.add_command(label='Funny "Appka" app', command=fun)
 filemenubar.add_cascade(label='Extra', menu=extraname)
+
+settingname = Menu(filemenubar, tearoff=0)
+settingname.add_command(label='Dark Mode', command=dark)
+filemenubar.add_cascade(label='Settings', menu=settingname)
+
 compiler.config(menu=filemenubar)
 
-editor=Text(width=97, height=25, font=("Helvetica", 16), selectbackground="yellow", selectforeground="black", undo=True)
+editor=Text(framer, width=97, height=25, font=("Helvetica", 16), selectbackground="yellow", selectforeground="black", undo=True)
 editor.pack()
 
 text_scroll.config(command=editor.yview)
